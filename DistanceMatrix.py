@@ -67,16 +67,17 @@ if __name__ == "__main__":
         print("Please set the GOOGLE_MAPS_API_KEY environment variable.")
     else:
         ## TESTING since this worked
-        
+        """""
         # Define your origins and destinations
         origins = ["Hartland, MI", "Brighton, MI"]
         destinations = ["Ann Arbor, MI", "Novi, MI"]
-    """""     
+        """
+       
         origins_coords = [(42.6017, -83.6807),  # Example: Hartland, MI coordinates
                   (42.5336, -83.7828)]  # Example: Brighton, MI coordinates
 
-destinations_coords = [(42.2808, -83.7430),  # Example: Ann Arbor, MI coordinates
-                       (42.4817, -83.4758)]"""
+        destinations_coords = [(42.2808, -83.7430),  # Example: Ann Arbor, MI coordinates
+                       (42.4817, -83.4758)]
 
 ## ////////////////////////////////////////////////////////// not needed?
         # Optional parameters (you can customize these)
@@ -86,8 +87,8 @@ destinations_coords = [(42.2808, -83.7430),  # Example: Ann Arbor, MI coordinate
         # Calculate the distance matrix
     distance_matrix_result = calculate_distance_matrix(
             api_key=api_key,
-            origins=origins,
-            destinations=destinations,
+            origins=origins_coords,
+            destinations=destinations_coords,
         )
 
         # Print the results
@@ -95,8 +96,8 @@ destinations_coords = [(42.2808, -83.7430),  # Example: Ann Arbor, MI coordinate
             print("Distance Matrix Results:")
             for i, row in enumerate(distance_matrix_result['rows']):
                 for j, element in enumerate(row['elements']):
-                    origin = origins[i]
-                    destination = destinations[j]
+                    origin = origins_coords[i]
+                    destination = destinations_coords[j]
                     status = element['status']
                     if status == 'OK':
                         distance = element['distance']['text']
