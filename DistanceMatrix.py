@@ -109,6 +109,7 @@ def calculate_distance_matrix(api_key, origins, destinations,mode=None,
            transit_routing_preference= transit_routing_preference
         )
         # error handling 
+        print("API successfully executed ")
         return result
     except googlemaps.exceptions.ApiError as e:
         print(f"An API error occurred: {e}")
@@ -157,7 +158,7 @@ if __name__ == "__main__":
             origins=origins_coords,
             destinations=destinations_coords,
         )
-    #print(distance_matrix_result) ///////// use this if you want to see default output
+    # print(distance_matrix_result) ///////// use this if you want to see default output
 
         # Print the results
     if distance_matrix_result:
