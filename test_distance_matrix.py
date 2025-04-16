@@ -1,4 +1,5 @@
 import pytest
+from DistanceMatrix import main
 from DistanceMatrix import calculate_distance_matrix
 
 
@@ -145,6 +146,15 @@ def test_origins_is_bad(sample_data, capsys):
     assert "API successfully executed " in captured
     assert 'status' in element and element['status'] == 'ZERO_RESULTS'
     
+def test_main_processes_data(capsys):
+    # Assuming main() processes some default data and prints a result
+        main()
+        captured = capsys.readouterr()
+        output = captured.out
+
+        assert "Distance" in output  # Check for a starting message
+        assert "Duration" in output
+    # Add more specific assertions based on the expected output of main()
     
     
     
