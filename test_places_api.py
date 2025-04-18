@@ -21,7 +21,7 @@ def test_find_waffle_house_toledo(mock_find_place, capsys):
         ]
     }
 
-    result = get_waffle_house_location()
+    result = get_waffle_house_location("123 Waffle St, Toledo, OH")
 
     assert result is not None
     location = result["geometry"]["location"]
@@ -50,7 +50,7 @@ def test_find_waffle_house_toledo_valid(mock_find_place, capsys):
         ]
     }
 
-    result = get_waffle_house_location()
+    result = get_waffle_house_location("123 Waffle St, Toledo, OH")
     assert result is not None
     location = result["geometry"]["location"]
     print(f"Latitude: {location['lat']}, Longitude: {location['lng']}")
@@ -68,7 +68,7 @@ def test_find_invalid_input(mock_find_place):
         "candidates": []
     }
 
-    result = get_waffle_house_location()
+    result = get_waffle_house_location("123 Waffle St, Toledo, OH")
     assert result is None
 
 
@@ -90,7 +90,7 @@ def test_missing_expected_fields(mock_find_place):
         ]
     }
 
-    result = get_waffle_house_location()
+    result = get_waffle_house_location("123 Waffle St, Toledo, OH")
     assert result is not None
     assert "name" in result
     assert "geometry" in result
@@ -120,7 +120,7 @@ def test_specific_location_coordinates(mock_find_place):
         ]
     }
 
-    result = get_waffle_house_location()
+    result = get_waffle_house_location("123 Waffle St, Toledo, OH")
     location = result["geometry"]["location"]
 
     assert location["lat"] == expected_lat

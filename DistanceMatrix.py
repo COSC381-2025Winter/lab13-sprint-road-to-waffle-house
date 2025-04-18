@@ -185,8 +185,8 @@ def calculate_distance_matrix(api_key, origins, destinations,mode=None,
         print(f"An unexpected error occurred: {e}")
         return None
     
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+    #main()
 
     # Replace with your actual Google Maps Platform API key
    # api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
