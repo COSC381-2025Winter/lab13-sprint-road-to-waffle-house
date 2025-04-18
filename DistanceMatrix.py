@@ -1,6 +1,10 @@
 from googlemaps import convert ## idk if this is really needed 
 import googlemaps
 
+def getUserAddress():
+    ####RYAN
+    #prompts user for location you are at
+    return input("Enter to your location: ")
 
 def main():
     api_key = "AIzaSyC2UHZ50CgCeueKLSZsp5NS7rJnUrj38gA"
@@ -13,49 +17,56 @@ def main():
         # Define your origins and destinations
         #origins = ["Hartland, MI", "Brighton, MI"]
         #destinations = ["Ann Arbor, MI", "Novi, MI"]
+    done = False
+    while not done:
+        yourLocation = getUserAddress()
+            # Define your origins and destinations
+        origins_coords = [yourLocation]
         
-       
-    origins_coords = [(42.6017, -83.6807),  # Example: Hartland, MI coordinates
-                        (42.5336, -83.7828)]  # Example: Brighton, MI coordinates
+        #origins_coords = [(42.6017, -83.6807),  # Example: Hartland, MI coordinates
+                            #(42.5336, -83.7828)]  # Example: Brighton, MI coordinates
 
-    destinations_coords = [(42.2808, -83.7430),  # Example: Ann Arbor, MI coordinates
-                            (42.4817, -83.4758)]
+        destinations_coords = [(41.705168, -83.663604)] #(closest waffle house)
+        #REPLACE WITH JOES API CALL
 
-## ////////////////////////////////////////////////////////// not needed?
-        # Optional parameters (you can customize these)
-       # travel_mode = "driving"
-       # units = "imperial"  # or "metric"
-#/////////////////////////////////////////////////////
-    """""
-        Calculate the distance matrix by calling the function
-        Since we everything but api key, origins and destinations have default values
-        in 
-        """
-    distance_matrix_result = calculate_distance_matrix(
-            api_key=api_key,
-            origins=origins_coords,
-            destinations=destinations_coords,
-        )
-    # print(distance_matrix_result) ///////// use this if you want to see default output
+    ## ////////////////////////////////////////////////////////// not needed?
+            # Optional parameters (you can customize these)
+        # travel_mode = "driving"
+        # units = "imperial"  # or "metric"
+    #/////////////////////////////////////////////////////
+        """""
+            Calculate the distance matrix by calling the function
+            Since we everything but api key, origins and destinations have default values
+            in 
+            """
+        distance_matrix_result = calculate_distance_matrix(
+                api_key=api_key,
+                origins=origins_coords,
+                destinations=destinations_coords,
+            )
+        # print(distance_matrix_result) ///////// use this if you want to see default output
 
-        # Print the results
-    if distance_matrix_result:
-            print("Distance Matrix Results:")
-            for i, row in enumerate(distance_matrix_result['rows']):
-                for j, element in enumerate(row['elements']):
-                    origin = origins_coords[i]
-                    destination = destinations_coords[j]
-                    status = element['status']
-                    if status == 'OK':
-                        distance = element['distance']['text']
-                        duration = element['duration']['text']
-                        print(f"From {origin} to {destination}:")
-                        print(f"  Distance: {distance}")
-                        print(f"  Duration: {duration}")
-                    #else:
-                     #   print(f"From {origin} to {destination}: {status}")
-   # else:
-          #  print("Failed to retrieve distance matrix results.")
+            # Print the results
+        if distance_matrix_result:
+                print("Distance Matrix Results:")
+                for i, row in enumerate(distance_matrix_result['rows']):
+                    for j, element in enumerate(row['elements']):
+                        origin = origins_coords[i]
+                        destination = destinations_coords[j]
+                        status = element['status']
+                        if status == 'OK':
+                            distance = element['distance']['text']
+                            duration = element['duration']['text']
+                            print(f"From {origin} to {destination}:")
+                            print(f"  Distance: {distance}")
+                            print(f"  Duration: {duration}")
+                            done = True
+                        else:
+                        #   print(f"From {origin} to {destination}: {status}")
+                            print("Location not found, try again (Hint: Putting the state such as MI at the end helps)\n")
+                            done = False
+    # else:
+        #  print("Failed to retrieve distance matrix results.")
 # import os 
 """""/\
 this is only used to hide key,the function is on line #118 and involves
@@ -173,8 +184,8 @@ def calculate_distance_matrix(api_key, origins, destinations,mode=None,
         print(f"An unexpected error occurred: {e}")
         return None
     
-#if __name__ == "__main__":
-  #  main()
+if __name__ == "__main__":
+    main()
 
     # Replace with your actual Google Maps Platform API key
    # api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
