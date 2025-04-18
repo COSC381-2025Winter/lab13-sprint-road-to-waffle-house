@@ -146,7 +146,7 @@ def test_origins_is_bad(sample_data, capsys):
     assert 'status' in element and element['status'] == 'ZERO_RESULTS'
     
 def test_main_processes_data(capsys, monkeypatch):
-    # Assuming main() processes some default location and prints a result
+    # Assuming main() processes some default, real, location and prints a result
         
         monkeypatch.setattr("builtins.input", lambda _: "Ann Arbor, MI")
         main()
@@ -157,7 +157,19 @@ def test_main_processes_data(capsys, monkeypatch):
         assert "Distance" in output  # Check for a starting message
         assert "Duration" in output
 
-       
+def test_main_incorrect_location(capsys, monkeypatch):
+    # gives main an incorrect location to see if it loops
+    responses = iter(["Not Real Place", "Ann Arbor, MI"])
+    monkeypatch.setattr("builtins.input", lambda msg: next(responses))
+    main()
+
+    captured = capsys.readouterr()
+    output = captured.out
+    
+    assert "Location not found, try again" in output  # Check for the incorrect location
+    assert "Distance" in output   # Check for the correct location then being found
+    assert "Duration" in output
+
     # Add more specific assertions based on the expected output of main()
 
 def test_getUserAddress(monkeypatch):
