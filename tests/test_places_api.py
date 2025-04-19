@@ -1,10 +1,10 @@
 import pytest
 from unittest.mock import patch
-from road_to_waffle_house.where_is_waffle_house import get_waffle_house_location
+from road_to_waffle_house.where_is_waffle_house import *
 import googlemaps  
 
 
-@patch("where_is_waffle_house.googlemaps.Client.find_place")
+@patch("road_to_waffle_house.where_is_waffle_house.googlemaps.Client.find_place")
 def test_find_waffle_house_toledo(mock_find_place, capsys):
     mock_find_place.return_value = {
         "status": "OK",
@@ -33,7 +33,7 @@ def test_find_waffle_house_toledo(mock_find_place, capsys):
     assert "Longitude:" in captured.out
 
 
-@patch("where_is_waffle_house.googlemaps.Client.find_place")
+@patch("road_to_waffle_house.where_is_waffle_house.googlemaps.Client.find_place")
 def test_find_waffle_house_toledo_valid(mock_find_place, capsys):
     mock_find_place.return_value = {
         "status": "OK",
@@ -61,7 +61,7 @@ def test_find_waffle_house_toledo_valid(mock_find_place, capsys):
     assert "Longitude:" in captured.out
 
 
-@patch("where_is_waffle_house.googlemaps.Client")
+@patch("road_to_waffle_house.where_is_waffle_house.googlemaps.Client")
 def test_find_invalid_input(mock_client_class):
     mock_client = mock_client_class.return_value
 
@@ -79,13 +79,12 @@ def test_find_invalid_input(mock_client_class):
         "results": []
     }
 
-    from src.road_to_waffle_house.where_is_waffle_house import get_waffle_house_location
     result = get_waffle_house_location("123 Waffle St, Toledo, OH")
     assert result is None
 
 
 
-@patch("where_is_waffle_house.googlemaps.Client.find_place")
+@patch("road_to_waffle_house.where_is_waffle_house.googlemaps.Client.find_place")
 def test_missing_expected_fields(mock_find_place):
     # Simulate API response missing formatted_address
     mock_find_place.return_value = {
@@ -112,7 +111,7 @@ def test_missing_expected_fields(mock_find_place):
     assert "lng" in result["geometry"]["location"]
 
 
-@patch("where_is_waffle_house.googlemaps.Client")
+@patch("road_to_waffle_house.where_is_waffle_house.googlemaps.Client")
 def test_specific_location_coordinates(mock_client_class):
     expected_lat = 41.5950663
     expected_lng = -83.6653049
@@ -143,7 +142,6 @@ def test_specific_location_coordinates(mock_client_class):
         ]
     }
 
-    from src.road_to_waffle_house.where_is_waffle_house import get_waffle_house_location
     result = get_waffle_house_location("123 Waffle St, Toledo, OH")
     location = result["geometry"]["location"]
 
@@ -151,7 +149,7 @@ def test_specific_location_coordinates(mock_client_class):
     assert location["lng"] == expected_lng
 
 # Timeout Error
-@patch("where_is_waffle_house.googlemaps.Client.geocode")
+@patch("road_to_waffle_house.where_is_waffle_house.googlemaps.Client.geocode")
 def test_timeout_error(mock_geocode, capsys):
     mock_geocode.side_effect = googlemaps.exceptions.Timeout("Request timed out")
     result = get_waffle_house_location("123 Waffle St, Toledo, OH")
@@ -160,7 +158,7 @@ def test_timeout_error(mock_geocode, capsys):
     assert "Request timed out" in captured.out
 
 # API Error
-@patch("where_is_waffle_house.googlemaps.Client.geocode")
+@patch("road_to_waffle_house.where_is_waffle_house.googlemaps.Client.geocode")
 def test_api_error(mock_geocode, capsys):
     mock_geocode.side_effect = googlemaps.exceptions.ApiError("API error occurred", "status")
     result = get_waffle_house_location("123 Waffle St, Toledo, OH")
@@ -169,7 +167,7 @@ def test_api_error(mock_geocode, capsys):
     assert "API error occurred" in captured.out
 
 # Generic Exception
-@patch("where_is_waffle_house.googlemaps.Client.geocode")
+@patch("road_to_waffle_house.where_is_waffle_house.googlemaps.Client.geocode")
 def test_generic_error(mock_geocode, capsys):
     mock_geocode.side_effect = Exception("An unexpected error occurred")
     result = get_waffle_house_location("123 Waffle St, Toledo, OH")
@@ -177,7 +175,7 @@ def test_generic_error(mock_geocode, capsys):
     assert result is None
     assert "An unexpected error occurred" in captured.out
 
-@patch("where_is_waffle_house.googlemaps.Client.places")
+@patch("road_to_waffle_house.where_is_waffle_house.googlemaps.Client.places")
 def test_empty_results(mock_places, capsys):
     # Simulate the API response with 'results' being an empty list
     mock_places.return_value = {
@@ -196,7 +194,7 @@ def test_empty_results(mock_places, capsys):
     # Assert that the printed output contains the expected message
     assert "No Waffle House found near: 123 Waffle St, Toledo, OH" in captured.out
 
-@patch("where_is_waffle_house.googlemaps.Client.places")
+@patch("road_to_waffle_house.where_is_waffle_house.googlemaps.Client.places")
 def test_no_results_field(mock_places, capsys):
     # Simulate the API response with no 'results' field at all
     mock_places.return_value = {}  # No 'results' in response

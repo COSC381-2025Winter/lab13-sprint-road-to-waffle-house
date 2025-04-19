@@ -2,11 +2,11 @@
 
 import pytest
 from unittest.mock import MagicMock, patch
-from road_to_waffle_house.gui import start_gui, open_prompt_window, on_submit, play_audio, open_final_window, run
+from road_to_waffle_house.gui import *
 
 
 # Simplified test for start_gui
-@patch('gui.ImageTk.PhotoImage')
+@patch('road_to_waffle_house.gui.ImageTk.PhotoImage')
 @patch('PIL.Image.open')
 @patch('threading.Thread')
 @patch('pygame.mixer.init')
@@ -22,7 +22,7 @@ def test_start_gui_with_button(mock_sound, mock_mixer, mock_thread,
     mock_main_window = MagicMock()
     mock_main_window.tk = MagicMock()
 
-    with patch('gui.tk.Tk', return_value=mock_main_window):
+    with patch('road_to_waffle_house.gui.tk.Tk', return_value=mock_main_window):
         mock_photo_image = MagicMock()
         mock_photo_image.__str__.return_value = "pyimage1"
         mock_photo_image.tk = mock_main_window.tk
@@ -62,9 +62,9 @@ def test_open_prompt_window():
 def test_on_submit_valid_input_valid_distance_matrix_done():
     with patch('tkinter.Entry') as MockEntry, \
          patch('tkinter.Label') as MockLabel, \
-         patch('gui.open_final_window') as MockOpenFinalWindow, \
-         patch('gui.run') as MockRun, \
-         patch('gui.distance_matrix') as MockDistanceMatrix:
+         patch('road_to_waffle_house.gui.open_final_window') as MockOpenFinalWindow, \
+         patch('road_to_waffle_house.gui.run') as MockRun, \
+         patch('road_to_waffle_house.gui.distance_matrix') as MockDistanceMatrix:
 
         mock_entry = MagicMock()
         MockEntry.return_value = mock_entry
@@ -83,8 +83,8 @@ def test_on_submit_valid_input_valid_distance_matrix_done():
 
 # Test for empty input in on_submit
 def test_on_submit_with_empty_input_shows_error():
-    with patch('gui.entry') as mock_entry, \
-         patch('gui.error_label') as mock_error_label:
+    with patch('road_to_waffle_house.gui.entry') as mock_entry, \
+         patch('road_to_waffle_house.gui.error_label') as mock_error_label:
         
         mock_entry.get.return_value = ""
 
@@ -98,13 +98,13 @@ def test_play_audio(monkeypatch):
     mock_sound1 = MagicMock()
     mock_sound2 = MagicMock()
 
-    monkeypatch.setattr("gui.pygame.mixer.init", MagicMock())
+    monkeypatch.setattr("road_to_waffle_house.gui.pygame.mixer.init", MagicMock())
 
     def mock_sound(file):
         return mock_sound1 if "ambiance" in file else mock_sound2
 
-    monkeypatch.setattr("gui.pygame.mixer.Sound", mock_sound)
-    monkeypatch.setattr("gui.time.sleep", MagicMock(side_effect=Exception("stop loop")))
+    monkeypatch.setattr("road_to_waffle_house.gui.pygame.mixer.Sound", mock_sound)
+    monkeypatch.setattr("road_to_waffle_house.gui.time.sleep", MagicMock(side_effect=Exception("stop loop")))
 
     with pytest.raises(Exception) as excinfo:
         play_audio()
@@ -117,10 +117,10 @@ def test_play_audio(monkeypatch):
 
 # Test for invalid input in on_submit
 def test_on_submit_invalid_input():
-    with patch("gui.entry") as mock_entry, \
-         patch("gui.error_label") as mock_error_label, \
-         patch("gui.run") as mock_run, \
-         patch("gui.distance_matrix") as mock_distance_matrix:
+    with patch("road_to_waffle_house.gui.entry") as mock_entry, \
+         patch("road_to_waffle_house.gui.error_label") as mock_error_label, \
+         patch("road_to_waffle_house.gui.run") as mock_run, \
+         patch("road_to_waffle_house.gui.distance_matrix") as mock_distance_matrix:
 
         mock_entry.get.return_value = "invalid address"
         
@@ -133,7 +133,7 @@ def test_on_submit_invalid_input():
 
 
 # Test for open_final_window
-@patch('gui.ImageTk.PhotoImage')
+@patch('road_to_waffle_house.gui.ImageTk.PhotoImage')
 @patch('PIL.Image.open')
 @patch('tkinter.Tk')
 @patch('tkinter.Label')
