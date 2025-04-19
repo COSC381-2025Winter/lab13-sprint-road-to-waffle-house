@@ -1,5 +1,6 @@
 from googlemaps import convert ## idk if this is really needed 
 import googlemaps
+from where_is_waffle_house import *
 
 def getUserAddress():
     ####RYAN
@@ -26,7 +27,7 @@ def main():
         #origins_coords = [(42.6017, -83.6807),  # Example: Hartland, MI coordinates
                             #(42.5336, -83.7828)]  # Example: Brighton, MI coordinates
 
-        destinations_coords = [(41.705168, -83.663604)] #(closest waffle house)
+        destinations_coords = [get_waffle_house_location(yourLocation).get("formatted_address")] #(closest waffle house)
         #REPLACE WITH JOES API CALL
 
     ## ////////////////////////////////////////////////////////// not needed?
@@ -185,7 +186,7 @@ def calculate_distance_matrix(api_key, origins, destinations,mode=None,
         return None
     
 #if __name__ == "__main__":
-#    main()
+    #main()
 
     # Replace with your actual Google Maps Platform API key
    # api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
