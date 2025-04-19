@@ -1,5 +1,6 @@
 import pytest
-from distance_matrix import *
+from DistanceMatrix import *
+
 
 @ pytest.fixture
 def sample_data():
