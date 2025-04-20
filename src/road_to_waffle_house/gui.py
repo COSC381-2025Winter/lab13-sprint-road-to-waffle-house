@@ -1,5 +1,5 @@
-from road_to_waffle_house.distance_matrix import run
-import road_to_waffle_house.distance_matrix as distance_matrix 
+from src.road_to_waffle_house.distance_matrix import run
+import src.road_to_waffle_house.distance_matrix as distance_matrix 
 
 """
 Giving credit where it is due

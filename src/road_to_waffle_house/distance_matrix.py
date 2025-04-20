@@ -1,6 +1,6 @@
 from googlemaps import convert 
 import googlemaps
-from road_to_waffle_house.where_is_waffle_house import *
+from src.road_to_waffle_house.where_is_waffle_house import *
 
 done = False
 
