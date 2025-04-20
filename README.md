@@ -1,5 +1,4 @@
-1. Since our program has a GUI, it will not run on the ec2 instances.
-2. When prompted to type address follow the style of this example (900 Oakwood St MI)
+This project will locate the nearest Waffle House and tell you how far away you are from it.  This program takes users inputted address and returns distance, and travel time to wherever the nearest Waffle House is in relation to that address, whilst implementing a gui.  When prompted to type address follow the style of this example (900 Oakwood St MI)
 
 For deployment:
 1. Files were sorting appropriately according to the layout given in class.
