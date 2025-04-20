@@ -11,7 +11,8 @@ If using bash
 1. ``` export PYTHONPATH="/home/ubuntu/road_to_wafflehouse"```
 2. ``` python -m src.road_to_waffle_house.main```
 
-
+**QUICK NOTE**
+Since our program uses tkinter to display gui, our program wil not run on an ec2 instance and a normal pc will be needed.
 
 **For deployment:**
 1. Files were sorting appropriately according to the layout given in class.
