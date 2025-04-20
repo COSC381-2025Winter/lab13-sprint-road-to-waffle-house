@@ -1,23 +1,23 @@
 [build-system]
-requires = ["hatchling >= 1.26"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "example_package_YOUR_USERNAME_HERE"
-version = "0.0.1"
-authors = [
-  { name="Example Author", email="author@example.com" },
-]
-description = "A small example package"
+name = "road_to_waffle_house"
+version = "0.1.1"
+description = "Find your way to the nearest Waffle House using Google Maps"
+authors = [{ name="Bear, Justin, Ryan, Joe", email="jbrigg17@emich.edu" }]
 readme = "README.md"
-requires-python = ">=3.9"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent",
+license = { file="LICENSE" }
+dependencies = [
+    "requests",
+    "pygame",
+    "tkinter; sys_platform == 'win32'",
 ]
-license = "MIT"
-license-files = ["LICEN[CS]E*"]
+requires-python = ">=3.7"
 
 [project.urls]
-Homepage = "https://github.com/pypa/sampleproject"
-Issues = "https://github.com/pypa/sampleproject/issues"
+Homepage = "https://github.com/yourusername/road_to_waffle_house"
+
+[tool.hatch.build.targets.wheel]
+packages = ["road_to_waffle_house"]
