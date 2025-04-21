@@ -23,3 +23,4 @@ Since our program uses tkinter to display gui, our program wil not run on an ec2
 4.  Then the package was built: python3 -m build
 5.  Test package was then uploaded  python3 -m twine upload --repository testpypi dist/road_to_waffle_house-*.  Package is in fact in the appropriate test.pypi place.
 6.  The main was set up to automatically start the gui.
+7.  The pip install for our lab: pip install -i https://test.pypi.org/simple/ road-to-waffle-house.  It runs out of a gui.  Make sure that you have the updated version of pygame and a setuptools that it more recent than 40.8.0 for the waffle house pip to install.
