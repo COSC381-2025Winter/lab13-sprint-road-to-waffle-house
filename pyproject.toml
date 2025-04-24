@@ -4,19 +4,29 @@ build-backend = "hatchling.build"
 
 [project]
 name = "road_to_waffle_house"
-version = "0.1.2"
+version = "0.1.9"
 description = "Find your way to the nearest Waffle House using Google Maps"
 authors = [{ name="Bear, Justin, Ryan, Joe", email="jbrigg17@emich.edu" }]
 readme = "README.md"
 license = { file="LICENSE" }
 dependencies = [
     "requests",
-    "pygame",
+    "pygame>=2.6.1",   # Specify a version for pygame to avoid any potential issues
+    "googlemaps>=4.10.0"  # Specify the version for googlemaps
 ]
 requires-python = ">=3.7"
 
+[project.scripts]
+road-to-waffle-house = "road_to_waffle_house.distance_matrix:main"
+
 [project.urls]
 Homepage = "https://github.com/yourusername/road_to_waffle_house"
+
+[tool.hatch.build]
+sources = ["src"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["road_to_waffle_house"]
