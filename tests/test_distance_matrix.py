@@ -148,36 +148,35 @@ def test_origins_is_bad(sample_data, capsys):
 def test_main_processes_data(capsys, monkeypatch):
     # Assuming main() processes some default, real, location and prints a result
         
-        #monkeypatch.setattr("builtins.input", lambda _: "Ann Arbor, MI")
-        run("Ann Arbor, MI")
+    monkeypatch.setattr("builtins.input", lambda _: "Ann Arbor, MI")
+    main()
+    #run("Ann Arbor, MI")
 
-        captured = capsys.readouterr()
-        output = captured.out
-        
-        assert "Distance" in output  # Check for a starting message
-        assert "Duration" in output
+    captured = capsys.readouterr()
+    output = captured.out
+
+    assert "Distance" in output  # Check for a starting message
+    assert "Duration" in output
 
 def test_main_incorrect_location(capsys, monkeypatch):
     # gives main an incorrect location to see if it loops
-    #responses = iter(["Not Real Place", "Ann Arbor, MI"])
-    #monkeypatch.setattr("builtins.input", lambda msg: next(responses))
-    run("Not Real Place")
+    responses = iter(["Not Real Place", "Ann Arbor, MI"])
+    monkeypatch.setattr("builtins.input", lambda msg: next(responses))
+    main()
 
     captured = capsys.readouterr()
     output = captured.out
     
     assert "Geocoding failed for address:" in output  # Check for the incorrect location
-    #assert "Distance" in output   # Check for the correct location then being found
-    #assert "Duration" in output
-
-    # Add more specific assertions based on the expected output of main()
+    assert "Distance" in output   # Check for the correct location then being found
+    assert "Duration" in output
 
 def test_getUserAddress(monkeypatch):
     # tests the getUserAddress function that gets the users address
         monkeypatch.setattr("builtins.input", lambda _: "Ann Arbor, MI")
         output = getUserAddress()
 
-        assert "Ann Arbor, MI" in output              
+        assert "Ann Arbor, MI" in output      
     
     
 # test to see if api key works 

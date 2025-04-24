@@ -48,3 +48,5 @@ To satisfy the pygame requirments: pip install pygame requests
 pip install road-to-waffle-house --no-deps -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple 
 
 It runs out of a gui.
+
+python3 -m src.road_to_waffle_house.distance_matrix inside of the "lab13-sprint-road-to-waffle-house" directory
