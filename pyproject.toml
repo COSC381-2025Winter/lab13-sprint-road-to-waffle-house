@@ -9,7 +9,11 @@ description = "Find your way to the nearest Waffle House using Google Maps"
 authors = [{ name="Bear, Justin, Ryan, Joe", email="jbrigg17@emich.edu" }]
 readme = "README.md"
 license = { file="LICENSE" }
-dependencies = ["requests", "pygame"]
+dependencies = [
+    "requests",
+    "pygame>=2.6.1",   # Specify a version for pygame to avoid any potential issues
+    "googlemaps>=4.10.0"  # Specify the version for googlemaps
+]
 requires-python = ">=3.7"
 
 [project.scripts]
