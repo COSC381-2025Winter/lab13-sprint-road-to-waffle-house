@@ -1,4 +1,1 @@
-from src.road_to_waffle_house.gui import start_gui
-
-if __name__ == "__main__":
-    start_gui()
+#Remenents from the GUI, our main function is just inside distance_matrix
