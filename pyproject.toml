@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "road_to_waffle_house"
-version = "0.1.8"
+version = "0.1.9"
 description = "Find your way to the nearest Waffle House using Google Maps"
 authors = [{ name="Bear, Justin, Ryan, Joe", email="jbrigg17@emich.edu" }]
 readme = "README.md"
