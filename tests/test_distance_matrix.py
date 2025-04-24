@@ -149,7 +149,11 @@ def test_main_processes_data(capsys, monkeypatch):
     # Assuming main() processes some default, real, location and prints a result
         
     monkeypatch.setattr("builtins.input", lambda _: "Ann Arbor, MI")
-    main()
+    try:
+        main()
+    except StopIteration:
+        print("⚠️ Ran out of mock inputs!")
+
     #run("Ann Arbor, MI")
 
     captured = capsys.readouterr()
@@ -160,7 +164,7 @@ def test_main_processes_data(capsys, monkeypatch):
 
 def test_main_incorrect_location(capsys, monkeypatch):
     # gives main an incorrect location to see if it loops
-    responses = iter(["Not Real Place", "Ann Arbor, MI"])
+    responses = iter(["Not Real Place", "bad", "Ann Arbor, MI"])
     monkeypatch.setattr("builtins.input", lambda msg: next(responses))
     main()
 

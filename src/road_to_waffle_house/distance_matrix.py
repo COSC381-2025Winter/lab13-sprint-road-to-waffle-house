@@ -2,7 +2,7 @@ from googlemaps import convert
 import googlemaps
 from .where_is_waffle_house import *
 
-done = False
+#done = False
 
 def getUserAddress():
     #### RYAN
@@ -23,8 +23,8 @@ def run(user_input):
         destinations_coords = [get_waffle_house_location(yourLocation).get("formatted_address")]  # (closest waffle house)
 
     except:
-        done = False
-        return
+        #done = False
+        return False
     
     """
     Calculate the distance matrix by calling the function.
@@ -49,7 +49,7 @@ def run(user_input):
                 print(f"From {origin} to {destination}:")
                 print(f"  Distance: {distance}")
                 print(f"  Duration: {duration}")
-                done = True
+                #done = True
                 return (distance, duration)
                  
 # Gets travel distance and time for a matrix of origins and destinations.
@@ -155,8 +155,9 @@ def calculate_distance_matrix(api_key, origins, destinations, mode=None,
         return None
 
 def main():
-    while not done:
-        run(getUserAddress())
+    while True:
+        if run(getUserAddress()):
+            break
 
 if __name__ == "__main__":
     main()
