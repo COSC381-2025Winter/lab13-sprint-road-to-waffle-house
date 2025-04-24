@@ -1,16 +1,16 @@
 This project will locate the nearest Waffle House and tell you how far away you are from it.  This program takes users inputted address and returns distance, and travel time to wherever the nearest Waffle House is in relation to that address, whilst implementing a gui.  When prompted to type address follow the style of this example (900 Oakwood St MI)
 
 **TO RUN**
+1. Create a new folder
+2. Create and activate a virtual environment.
+3. Run the following commands
 
-For either platform, please setup the virtual environment and download all packages from requirements.txt
-   
-If using powershell:
-1. ```$env:PYTHONPATH = "src"```
-2. ```python -m road_to_waffle_house.main```
-   
-If using bash
-1. ``` export PYTHONPATH="/home/ubuntu/road_to_wafflehouse"```
-2. ``` python -m src.road_to_waffle_house.main```
+`pip install setuptools --upgrade`
+
+`pip install --upgrade pip wheel`
+
+`pip install -i https://test.pypi.org/simple/ road-to-waffle-house --extra-index-url https://pypi.org/simple`
+
 
 **QUICK NOTE**
 
