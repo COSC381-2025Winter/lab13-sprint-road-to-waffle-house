@@ -47,7 +47,17 @@ To satisfy the pygame requirments: pip install pygame requests
 
 pip install road-to-waffle-house --no-deps -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple 
 
-Run in bash: PYTHONPATH=src
+###############
 
-To run program: python3 -m src.road_to_waffle_house.distance_matrix 
+git clone -b returnCLI  --single-branch  git@github.com:COSC381-2025Winter/lab13-sprint-road-to-waffle-house.git
+
+Make a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+Install the requirements.txt
+pip install -r requirements.txt
+
+To run program: 
+python3 -m src.road_to_waffle_house.distance_matrix 
 inside of the "lab13-sprint-road-to-waffle-house" directory
