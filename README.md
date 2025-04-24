@@ -49,15 +49,15 @@ pip install road-to-waffle-house --no-deps -i https://test.pypi.org/simple/ --ex
 
 ###############
 
-git clone -b returnCLI  --single-branch  git@github.com:COSC381-2025Winter/lab13-sprint-road-to-waffle-house.git
+`git clone -b returnCLI  --single-branch  git@github.com:COSC381-2025Winter/lab13-sprint-road-to-waffle-house.git`
 
 Make a virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
+`python3 -m venv .venv`
+`source .venv/bin/activate`
 
-Install the requirements.txt
-pip install -r requirements.txt
+Install the requirements.txt inside the "lab13-sprint-road-to-waffle-house" directory:
+`pip install -r requirements.txt`
 
-To run program: 
-python3 -m src.road_to_waffle_house.distance_matrix 
-inside of the "lab13-sprint-road-to-waffle-house" directory
+To run program go inside the "lab13-sprint-road-to-waffle-house" directory: 
+`python3 -m src.road_to_waffle_house.distance_matrix` 
+
