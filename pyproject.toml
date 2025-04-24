@@ -12,7 +12,6 @@ license = { file="LICENSE" }
 dependencies = [
     "requests",
     "pygame",
-    "tkinter; sys_platform == 'win32'",
 ]
 requires-python = ">=3.7"
 
