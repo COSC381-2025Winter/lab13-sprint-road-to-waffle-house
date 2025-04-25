@@ -17,7 +17,7 @@ dependencies = [
 requires-python = ">=3.7"
 
 [project.scripts]
-road-to-waffle-house = "road_to_waffle_house.gui:main"
+road-to-waffle-house = "road_to_waffle_house.main:main"
 
 [project.urls]
 Homepage = "https://github.com/yourusername/road_to_waffle_house"
