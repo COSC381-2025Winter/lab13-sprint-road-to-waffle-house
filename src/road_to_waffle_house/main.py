@@ -1,4 +1,4 @@
-from src.road_to_waffle_house.gui import start_gui
+from road_to_waffle_house.gui import start_gui
 
 def main():
     start_gui()
