@@ -98,6 +98,9 @@ INSTRUCTIONS FOR WHEN NOT USING A GUI (returnCLI branch):
     `python3 -m venv .venv`
     `source .venv/bin/activate`
 
+THIS IS IMPORTANT!!!!!!
+pip install road-to-waffle-house==0.1.8 -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple
+
 
 `git clone -b returnCLI  --single-branch  git@github.com:COSC381-2025Winter/lab13-sprint-road-to-waffle-house.git`
 
