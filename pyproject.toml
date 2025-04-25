@@ -13,7 +13,7 @@ dependencies = [
     "requests",
     "pygame>=2.6.1",   # Specify a version for pygame to avoid any potential issues
     "googlemaps>=4.10.0",
-    "pillow>=11.2.1" Specify the version for googlemaps
+    "pillow>=11.2.1" #Specify the version for googlemaps
 ]
 requires-python = ">=3.7"
 
