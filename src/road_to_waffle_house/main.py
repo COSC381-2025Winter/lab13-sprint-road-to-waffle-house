@@ -1,4 +1,7 @@
 from src.road_to_waffle_house.gui import start_gui
 
-if __name__ == "__main__":
+def main():
     start_gui()
+    
+if __name__ == "__main__":
+    main()
