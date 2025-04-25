@@ -22,7 +22,7 @@ def get_waffle_house_location(address):
         response = gmaps.places(
             query="Waffle House",
             location=(latitude, longitude),
-            radius=5000000,  # 50 km radius
+            radius=50000,  # 50 km radius
             type="restaurant"
         )
 
