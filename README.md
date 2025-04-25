@@ -104,7 +104,7 @@ INSTRUCTIONS FOR WHEN NOT USING A GUI (returnCLI branch):
 
 3. Once activating the virtual environment, use this pip install:
 
-    pip install road-to-waffle-house==0.1.8 -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple
+    pip install road-to-waffle-house==0.1.12 -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple
 
 
 4. Once this package has been installed, simply type 'road-to-waffle-house' into the command prompt line, and the API will automatically be activated.  Any wrong inputs will be told to the user and they will be prompted to try again.  
@@ -137,6 +137,6 @@ Package is in fact in the appropriate test.pypi place.
 
 6.  After those pip installs are completed (which are outside the scope of our project, but are necessary for it to run) This is the pip install for our lab: 
 
-pip install road-to-waffle-house==0.1.8 -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple
+pip install road-to-waffle-house==0.1.12 -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple
 
 ## DEPLOYMENT STEPS COMPLETED. ##
