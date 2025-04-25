@@ -110,8 +110,3 @@ Package is in fact in the appropriate test.pypi place.
  * Bear Kennedy
  * Justin Miles
  * Ryan Retan
-
-
-pip install road-to-waffle-house --no-deps -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple 
-
-It runs out of a gui.
