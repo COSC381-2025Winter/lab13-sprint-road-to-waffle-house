@@ -30,3 +30,7 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["road_to_waffle_house"]
+include = [
+    "road_to_waffle_house/photos/*",
+    "road_to_waffle_house/audio/*"
+]
