@@ -1,5 +1,6 @@
-from src.road_to_waffle_house.distance_matrix import run
-import src.road_to_waffle_house.distance_matrix as distance_matrix 
+from road_to_waffle_house.distance_matrix import run
+import road_to_waffle_house.distance_matrix as distance_matrix 
+from importlib.resources import files
 
 """
 Giving credit where it is due
@@ -27,7 +28,8 @@ def start_gui(run_loop=True):
     main_window.configure(bg="black")
 
     # Load the image (replace with your image file path)
-    image = Image.open("photos/wafflehouse.png")  # e.g., "wafflehouse.png"
+    img_path = files("road_to_waffle_house.photos").joinpath("wafflehouse.png")
+    image = Image.open(img_path)  # e.g., "wafflehouse.png"
     image = image.resize((600, 400), Image.Resampling.LANCZOS)  # Resize to smaller dimensions
     photo = ImageTk.PhotoImage(image)
 
@@ -91,9 +93,11 @@ def on_submit():
             
 def setup_audio():
     pygame.mixer.init()
-    sound1 = pygame.mixer.Sound("audio/ambiance.mp3")
+    audio_path = files("road_to_waffle_house.audio").joinpath("ambiance.mp3")
+    sound1 = pygame.mixer.Sound(audio_path)
     sound1.set_volume(1.0)
-    sound2 = pygame.mixer.Sound("audio/waffle.mp3")
+    audio_path = files("road_to_waffle_house.audio").joinpath("waffle.mp3")
+    sound2 = pygame.mixer.Sound(audio_path)
     sound2.set_volume(0.2)
     return sound1, sound2
 
@@ -126,7 +130,8 @@ def open_final_window(info):
     frame.pack(fill="both", expand=True)
 
     # Load the first image (above the text)
-    image = Image.open("photos/you_are.png")  # Adjust path if needed
+    img_path = files("road_to_waffle_house.photos").joinpath("you_are.png")
+    image = Image.open(img_path)  # Adjust path if needed
     image = image.resize((300, 200), Image.Resampling.LANCZOS)  # Resize the image smaller
     photo = ImageTk.PhotoImage(image)
 
@@ -144,7 +149,8 @@ def open_final_window(info):
     error_label2.pack(pady=5)
 
     # Load the second image (below the text)
-    image_bottom = Image.open("photos/from.png")  # Adjust path if needed
+    img_path = files("road_to_waffle_house.photos").joinpath("from.png")
+    image_bottom = Image.open(img_path)  # Adjust path if needed
     image_bottom = image_bottom.resize((200, 150), Image.Resampling.LANCZOS)  # Resize the image smaller
     photo_bottom = ImageTk.PhotoImage(image_bottom)
 
@@ -154,7 +160,8 @@ def open_final_window(info):
     image_label_bottom.pack(pady=10)
 
     # Load the third image (below the second image)
-    image_bottom2 = Image.open("photos/logo.png")  # Adjust path if needed
+    img_path = files("road_to_waffle_house.photos").joinpath("logo.png")
+    image_bottom2 = Image.open(img_path)  # Adjust path if needed
     image_bottom2 = image_bottom2.resize((300, 150), Image.Resampling.LANCZOS)  # Resize the image bigger
     photo_bottom2 = ImageTk.PhotoImage(image_bottom2)
 
@@ -165,5 +172,6 @@ def open_final_window(info):
 
     # Start the final window's main loop
     final_window.mainloop()
+
 
 
