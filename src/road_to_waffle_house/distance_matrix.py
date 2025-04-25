@@ -1,6 +1,6 @@
 from googlemaps import convert 
 import googlemaps
-from src.road_to_waffle_house.where_is_waffle_house import *
+from road_to_waffle_house.where_is_waffle_house import *
 
 done = False
 
@@ -153,3 +153,4 @@ def calculate_distance_matrix(api_key, origins, destinations, mode=None,
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
         return None
+
